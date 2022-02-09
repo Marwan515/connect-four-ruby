@@ -50,6 +50,12 @@ class Board
         @grid[row][column] == symbol && @grid[row + 1][column - 1] == symbol && @grid[row + 2][column - 2] == symbol && @grid[row + 3][column - 3] == symbol
     end
 
+    def diagonal_left_to_right(row, column, symbol)
+        return if column < 3
+
+        @grid[-row][column] == symbol && @grid[-row - 1][column + 1] == symbol && @grid[-row - 2][column + 2] == symbol && @grid[-row - 3][column + 3] == symbol
+    end
+
     def check_diagonal_left(row, column, symbol)
         return if column < 3
 
@@ -59,7 +65,7 @@ class Board
     def check_diagonals(row, column, symbol)
         return unless row < 3
     
-        check_diagonal_right(row, column, symbol) || check_diagonal_left(row, column, symbol)
+        check_diagonal_right(row, column, symbol) || check_diagonal_left(row, column, symbol) || diagonal_left_to_right(row, column, symbol)
     end
     
     def check_row(row, column, symbol)

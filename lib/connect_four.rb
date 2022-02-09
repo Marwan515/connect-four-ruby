@@ -30,12 +30,12 @@ class ConnectFour
         end
         @playing_board.display_board
         @playing_board = Board.new
-        puts "   Enter:[1] To Play Again?\n   Enter:[2] To Exit"
+        puts "   Enter:[1] To Play Again?\n   Enter:[2] To Exit".colorize(:magenta)
         p = gets.chomp
         if p == "1"
             play
         elsif p == "2"
-            return puts "   SEE YOU SOON! CHAMP 🏆"
+            return puts "   SEE YOU SOON! CHAMP 🏆". colorize(:green)
         end
     end
 
@@ -80,14 +80,14 @@ class ConnectFour
     end
 
     def intro
-        puts "   CONNECT 4OUR   \n   You Have! To Connect Four Dots To Win!   \n   Vertical Horizontal OR Diagonal"
-        puts "   Enter First Player NAME: "
+        puts "   CONNECT 4OUR   \n   You Have! To Connect Four Dots To Win!   \n   Vertical Horizontal OR Diagonal".colorize(:color => :blue, :background => :yellow)
+        puts "   Enter First Player NAME: ".colorize(:green)
         b = gets.chomp.upcase
         @player_one_name = b
-        puts "   Enter Second Player's NAME: "
+        puts "   Enter Second Player's NAME: ".colorize(:blue)
         c = gets.chomp.upcase
         @player_two_name = c
-        puts "#{@player_one_name} VS #{@player_two_name} \n To Play You'll Just Have To Enter The Column Number"
+        puts "#{@player_one_name} VS #{@player_two_name} \n To Play You'll Just Have To Enter The Column Number".colorize(:red)
     end
 
     def verify_input(input)
@@ -100,10 +100,10 @@ class ConnectFour
             7.times do |column|
                 if @playing_board.check_row(row, column, player)
                     if player == @playerone
-                        puts "    #{@player_one_name} WON!🏆 "
+                        puts "    #{@player_one_name} WON!🏆 ".colorize(:green)
                         return true
                     else
-                        puts "    #{@player_two_name} WON!🏆 "
+                        puts "    #{@player_two_name} WON!🏆 ".colorize(:green)
                         return true
                     end
                 end
